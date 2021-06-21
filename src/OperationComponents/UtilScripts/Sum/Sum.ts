@@ -1,4 +1,4 @@
-import {MakeStringFromPlacesInArr} from "../UtilScripts/MakeStringFromPlacesInArr/MakeStringFromPlacesInArr";
+import {MakeStringFromPlacesInArr} from "../MakeStringFromPlacesInArr/MakeStringFromPlacesInArr";
 
 export const Sum = (number1: number[], number2: number[]): number[] => {
     let rules = new Map()
