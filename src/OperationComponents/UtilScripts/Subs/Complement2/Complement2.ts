@@ -10,7 +10,8 @@ export const Complement2 = (numberToConvert: number[]): number[] => {
         const complement1 = Complement1(numberToConvert)
         const one = [1]
         const leveledArraysForSum = LevelArrays(complement1, one)
-        const sumResult = Sum(leveledArraysForSum.num1, leveledArraysForSum.num2)
+        const sum = Sum(leveledArraysForSum.num1, leveledArraysForSum.num2)
+        const sumResult = sum.result
         return sumResult
 
     }

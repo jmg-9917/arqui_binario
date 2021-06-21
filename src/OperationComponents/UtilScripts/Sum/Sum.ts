@@ -1,6 +1,13 @@
 import {MakeStringFromPlacesInArr} from "../MakeStringFromPlacesInArr/MakeStringFromPlacesInArr";
 
-export const Sum = (number1: number[], number2: number[]): number[] => {
+interface SumParts {
+    carry: number[],
+    num1: number[],
+    num2: number[],
+    result: number[]
+}
+
+export const Sum = (number1: number[], number2: number[]): SumParts => {
     let rules = new Map()
     rules.set("010", {carry: 0, resultNumber: 1})
     rules.set("100", {carry: 0, resultNumber: 1})
@@ -36,8 +43,13 @@ export const Sum = (number1: number[], number2: number[]): number[] => {
         carry.unshift(rules.get(lastColumn).carry)
         result.unshift(rules.get(lastColumn).resultNumber)
         if (result[0] === 0) {result.shift()}
-        return result
 
+        return {
+            carry: carry,
+            num1: number1,
+            num2: number2,
+            result: result
+        }
     }
 }
 
