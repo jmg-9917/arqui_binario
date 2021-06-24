@@ -12,15 +12,9 @@ export const SubsWithCarry = (number1: number[], number2: number[]): number => {
 
     let carry = new Array(number1.length).fill(0)
     let booleanInRules = false
-    let placeThatNeedsCarryValue = 0
-    for (let i = number1.length - 1; i > 0; i--) {
-        let placeInArrayKey = MakeStringFromPlacesInArr(carry[i], number1[i], number2[i])
-        booleanInRules = rules.get(placeInArrayKey).carryNecessary
-        if (booleanInRules) {
-            placeThatNeedsCarryValue = i
-            break
-        }
-    }
+    let startingPosition = 0
+
+
     if (booleanInRules) {
         console.log('need carry and number manipulation')
         const newArrays = ArrManipulationProcessObject(placeThatNeedsCarryValue, carry, number1, number2)
