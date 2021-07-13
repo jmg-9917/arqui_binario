@@ -1,3 +1,4 @@
+import {carryLoop} from "./CarryManipulationProcess/CarryManipulationProcess"
 
 interface ArraysForRundown {
     newCarry: number[],
@@ -21,20 +22,9 @@ export const ArrManipulationProcessObject = (lastPlaceKnownToMissCarryValue: num
     carry[positionForSwap + 1] = 2
     positionForSwap += 2
     let pointerForRun = 0
-    for (let j = positionForSwap; j < lastPlaceKnownToMissCarryValue - 1; j++) {
-        carry[positionForSwap] -= 1
-        carry[positionForSwap + 1] = 2
-        number1[positionForSwap] -= 1
-        if (number1[positionForSwap] === 0) {
-            pointerForRun = positionForSwap
-            break
-        }
-        carry[positionForSwap] -= 1
-
-    }
-    console.log(pointerForRun)
+    const newCarry = carryLoop(0, lastPlaceKnownToMissCarryValue, carry, number1, number2)
     return {
-        newCarry: carry,
+        newCarry: newCarry,
         newNumber1: number1,
         newNumber2: number2
     }

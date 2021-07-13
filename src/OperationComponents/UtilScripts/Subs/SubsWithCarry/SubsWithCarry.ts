@@ -9,21 +9,23 @@ export const SubsWithCarry = (number1: number[], number2: number[]): number => {
     rules.set('201', {carryNecessary: false})
     rules.set('101', {carryNecessary: false})
     rules.set('000', {carryNecessary: false})
+    rules.set('010', {carryNecessary: false})
 
     let carry = new Array(number1.length).fill(0)
     let booleanInRules = false
     let startingPosition = 0
 
+    for (let i in number1) {
+        let numberSet = MakeStringFromPlacesInArr(carry[i], number1[i], number2[i])
+        let ruleObjectChosen = rules.get(numberSet)
+        if (ruleObjectChosen.carryNecessary === true) {
+            booleanInRules = true
+            break
+        }
+    }
 
     if (booleanInRules) {
         console.log('need carry and number manipulation')
-        const newArrays = ArrManipulationProcessObject(placeThatNeedsCarryValue, carry, number1, number2)
-        const result = FinalSubsRundown(newArrays.newCarry, newArrays.newNumber1, newArrays.newNumber2)
-        const leveledResult = LevelArrays(number2, result).num2
-        console.log(newArrays.newCarry)
-        console.log(newArrays.newNumber1)
-        console.log(newArrays.newNumber2)
-        console.log(leveledResult)
 
     } else {
         console.log('perform operation run for steps')
@@ -37,10 +39,9 @@ export const SubsWithCarry = (number1: number[], number2: number[]): number => {
     }
 
 
+    console.log(booleanInRules)
 
-
-
-    return placeThatNeedsCarryValue
+    return 0
 
 }
 
